@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+        "onig",
+        "onig_sys"
+]

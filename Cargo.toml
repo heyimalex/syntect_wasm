@@ -37,3 +37,4 @@ opt-level = "s"
 
 [patch.crates-io]
 same-file = { path = "same-file" }
+onig_sys = { path = "rust-onig/onig_sys" }
