@@ -1,0 +1,48 @@
+language: rust
+
+os:
+- osx
+- linux
+
+rust:
+- 1.27.0
+- stable
+- beta
+- nightly
+
+branches:
+  except:
+    - gh-pages
+
+env:
+  - ONIG_FEATURES=
+
+script:
+- cargo build --features="$ONIG_FEATURES" --verbose
+- |
+  if [ "$TRAVIS_OS_NAME" == "linux" ]
+  then
+    p=$(cd ./target/debug/build/onig_sys-*/out/lib/ && pwd)
+    echo "adding $p to linker path"
+    export LD_LIBRARY_PATH="${p}:${LD_LIBRARY_PATH}"
+  fi
+- cargo test --features="$ONIG_FEATURES" --verbose
+
+# Allow failures in the nightly build. We don't want to fail just
+# because of Rust instability.
+matrix:
+  allow_failures:
+    - rust: nightly
+  include:
+    - rust: stable
+      os: osx
+      env: RUSTONIG_STATIC_LIBONIG=1
+    - rust: stable
+      os: linux
+      env: RUSTONIG_STATIC_LIBONIG=1
+    - rust: nightly
+      os: linux
+      env: ONIG_FEATURES=std-pattern
+    - rust: nightly
+      os: osx
+      env: ONIG_FEATURES=std-pattern
