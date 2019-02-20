@@ -4,7 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/7qxdb44xpw4bkjfi/branch/master?svg=true)](https://ci.appveyor.com/project/iwillspeak/rust-onig/branch/master)
 [![dependency status](https://deps.rs/crate/onig/4.3.1/status.svg)](https://deps.rs/crate/onig/4.3.1)
 
-Rust bindings for the [Oniguruma regex library][Onig_wiki], a powerful and mature regular expression library with support for a wide range of character sets and language syntaxes. Oniguruma is written in C. This repository provides two crates: `onig-sys` which provides the raw Rust FFI bindings, and `onig`, which provides a safe Rust wrapper around them.
+Rust bindings for the [Oniguruma regex library][onig_wiki], a powerful and mature regular expression library with support for a wide range of character sets and language syntaxes. Oniguruma is written in C. This repository provides two crates: `onig-sys` which provides the raw Rust FFI bindings, and `onig`, which provides a safe Rust wrapper around them.
 
 ## Documentation
 
@@ -45,7 +45,7 @@ for (i, pos) in regex.captures("hello").unwrap().iter_pos().enumerate() {
 
 If a version of Oniguruma can be found by `pkg-config` then that will be used. If not then Oniguruma will be compiled from source and linked to the `onig-sys` crate.
 
-By default `rust-onig` will be statically linked to `libonig`. If you would rather that dynamic linking is used then the environment variables `RUSTONIG_STATIC_LIBONIG` and `RUSTONIG_DYNAMIC_LIBONIG` can be set. On *nix:
+By default `rust-onig` will be statically linked to `libonig`. If you would rather that dynamic linking is used then the environment variables `RUSTONIG_STATIC_LIBONIG` and `RUSTONIG_DYNAMIC_LIBONIG` can be set. On \*nix:
 
     $ RUSTONIG_DYNAMIC_LIBONING=1 cargo build
 
@@ -67,23 +67,16 @@ With all that combined, here's an example command to debug the pattern `a|b`:
 
     RUSTONIG_SYSTEM_LIBONIG=0 cargo run --features print-debug --example capturedump 'a|b'
 
-## Supported Rust Versions
-
-Rust onig supports Rust 1.27.0 or later. If the minimum supported rust
-version is changed then the minor version number will be
-increased. That is v4.2.x should always compile with the same version
-of the compiler.
-
 ## Rust-Onig is Open Source
 
 The contents of this repository are distributed under the MIT license. See
 [LICENSE](LICENSE.md) for more details. If you'd like to contribute take a look
 at our open [easy issues][easy_issues].
 
- [Onig_wiki]: https://en.wikipedia.org/wiki/Oniguruma
- [onig_crate_doc]: https://docs.rs/onig/4.3.2/onig/
- [examples_folder]: https://github.com/rust-onig/rust-onig/tree/master/onig/examples
- [regex_new]: https://docs.rs/onig/4.3.2/onig/struct.Regex.html#method.new
- [regex_is_match]: https://docs.rs/onig/4.3.2/onig/struct.Regex.html#method.is_match
- [regex_find]: https://docs.rs/onig/4.3.2/onig/struct.Regex.html#method.find
- [easy_issues]: https://github.com/rust-onig/rust-onig/issues?q=is%3Aopen+is%3Aissue+label%3AE-Easy
+[onig_wiki]: https://en.wikipedia.org/wiki/Oniguruma
+[onig_crate_doc]: https://docs.rs/onig/4.3.1/onig/
+[examples_folder]: https://github.com/rust-onig/rust-onig/tree/master/onig/examples
+[regex_new]: https://docs.rs/onig/4.3.1/onig/struct.Regex.html#method.new
+[regex_is_match]: https://docs.rs/onig/4.3.1/onig/struct.Regex.html#method.is_match
+[regex_find]: https://docs.rs/onig/4.3.1/onig/struct.Regex.html#method.find
+[easy_issues]: https://github.com/rust-onig/rust-onig/issues?q=is%3Aopen+is%3Aissue+label%3AE-Easy

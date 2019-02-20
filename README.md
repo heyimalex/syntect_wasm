@@ -6,7 +6,7 @@ Attempt to run [syntect](https://github.com/trishume/syntect) in the browser. Wo
 
 - [x] Initial commit! Environment setup via docker-compose, lib with simple highlighting function exported.
 - [x] Get same-file building under wasm. Forked to `./same-file`, added `noop.rs` which just returns errors for all of the main methods, and used [[patch]](https://doc.rust-lang.org/cargo/reference/manifest.html#the-patch-section) to make cargo use it when building. This is necessary because of [this issue](https://github.com/BurntSushi/same-file/issues/42).
-- [x] Get rust-onig build fixed. Fixed a build script error.
+- [x] Get rust-onig building under wasm. Forked to `./rust-onig`, commented lines 86-91 out because they would panic while building; the `CARGO_CFG_TARGET_FAMILY` env var wasn't set. Should probably fix this upstream since it's trivial.
 - [ ] Wait until webassembly lands in llvm stable :sadface:
 - [ ] ???
 - [ ] Syntect is running in the browser!

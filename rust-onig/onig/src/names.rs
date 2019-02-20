@@ -166,9 +166,8 @@ mod tests {
         assert_eq!(regex.capture_histories_len(), 0);
     }
 
-    #[test] #[cfg_attr(all(windows, target_arch="x86"), ignore)]
+    #[test]
     fn test_regex_names() {
-        // FIXME: for windows i686 targets, `let names = ...` causes segfault when testing (see github:rust-onig/rust-onig/issue#100)
         let regex = Regex::new("(he)(l+)(o)").unwrap();
         let names = regex.capture_names().collect::<Vec<_>>();
         assert_eq!(names, vec![]);
