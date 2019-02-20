@@ -83,7 +83,7 @@ fn compile() {
         fs::copy(src.join(format!("config.h.win{}", bits)), config_h)
             .expect("Can't copy config.h.win??");
     } else {
-        let family = env::var("CARGO_CFG_TARGET_FAMILY").unwrap();
+        let family = env::var("CARGO_CFG_TARGET_FAMILY").unwrap_or("unknown".to_string());
         if family == "unix" {
             cc.define("HAVE_UNISTD_H", Some("1"));
             cc.define("HAVE_SYS_TYPES_H", Some("1"));
